@@ -17,6 +17,7 @@
       <nav>
         <a href="#features">Features</a>
         <a href="install/docker.html">Install</a>
+        <button type="button" class="btn btn-donate btn-sm" data-donate-btn onclick="openRclonaDonate && openRclonaDonate()">Donate</button>
         <a href="install/docker.html" class="btn btn-primary btn-sm">Get started</a>
       </nav>
     </div>
@@ -128,6 +129,20 @@ docker compose up -d</code></pre>
         </div>
       </div>
     </section>
+
+    <section id="support" class="support-section">
+      <div class="container support-inner">
+        <h2>Support Rclona</h2>
+        <p>
+          Rclona is free to self-host. If it saves you time managing backups and cloud
+          storage, a donation helps fund development and hosting. Payments are handled
+          securely by FastSpring.
+        </p>
+        <button type="button" class="btn btn-donate" data-donate-btn onclick="openRclonaDonate && openRclonaDonate()">
+          Donate via FastSpring
+        </button>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -136,6 +151,8 @@ docker compose up -d</code></pre>
       <p class="footer-note">Source code is proprietary. Install via published Docker images.</p>
     </div>
   </footer>
+  <script src="assets/js/fastspring-config.js"></script>
+  <script src="assets/js/fastspring.js"></script>
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
