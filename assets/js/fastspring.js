@@ -13,7 +13,7 @@
 
   const script = document.createElement("script");
   script.id = "fsc-api";
-  script.src = "https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js";
+  script.src = "https://sbl.onfastspring.com/sbl/1.0.7/fastspring-builder.min.js";
   script.type = "text/javascript";
   script.setAttribute("data-storefront", cfg.storefront);
   document.body.appendChild(script);
