@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Rclona desktop apps for Windows, macOS, and Linux — coming soon." />
+  <title>Desktop apps — coming soon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="../index.html">Rclona</a>
+      <nav>
+        <a href="../index.html#features">Features</a>
+        <a href="docker.html">Install</a>
+        <a href="docker.html" class="btn btn-primary btn-sm">Get started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="docs-page">
+    <div class="container">
+      <nav class="docs-nav">
+        <a href="docker.html">Docker</a>
+        <a href="desktop.html" class="active">Desktop (coming soon)</a>
+      </nav>
+
+      <h1>Desktop apps</h1>
+      <p class="docs-lead">
+        Native apps for Windows, macOS, and Linux are in development using Tauri.
+        They bundle the same UI and backend as the Docker deployment.
+      </p>
+
+      <section class="doc-section">
+        <h2>Status</h2>
+        <div class="platform-grid">
+          <div class="platform-card">
+            <h3>Windows</h3>
+            <span class="badge slate">Coming soon</span>
+            <p>.msi / .exe installer</p>
+          </div>
+          <div class="platform-card">
+            <h3>macOS</h3>
+            <span class="badge slate">Coming soon</span>
+            <p>Universal binary (Intel + Apple Silicon)</p>
+          </div>
+          <div class="platform-card">
+            <h3>Linux</h3>
+            <span class="badge slate">Coming soon</span>
+            <p>.deb and AppImage</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>Use Docker today</h2>
+        <p>
+          Until desktop builds are published, run Rclona in Docker on your NAS, VPS,
+          or homelab and access it from any browser on your network.
+        </p>
+        <a href="docker.html" class="btn btn-primary">Docker install guide →</a>
+      </section>
+
+      <section class="doc-section">
+        <h2>What to expect</h2>
+        <ul>
+          <li>Same features as the web UI — remotes, browser, operations, jobs</li>
+          <li>Local rclone config stored on your machine</li>
+          <li>No Docker required on the desktop</li>
+          <li>Automatic updates when available</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Rclona</p>
+      <p class="footer-note"><a href="../index.html">← Back to home</a></p>
+    </div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

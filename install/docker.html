@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Install Rclona with Docker — pull the image, configure auth, mount volumes, and run behind a reverse proxy." />
+  <title>Install Rclona with Docker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="../index.html">Rclona</a>
+      <nav>
+        <a href="../index.html#features">Features</a>
+        <a href="docker.html" class="active">Install</a>
+        <a href="docker.html" class="btn btn-primary btn-sm">Get started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="docs-page">
+    <div class="container">
+      <nav class="docs-nav">
+        <a href="docker.html" class="active">Docker</a>
+        <a href="desktop.html">Desktop (coming soon)</a>
+      </nav>
+
+      <h1>Install with Docker</h1>
+      <p class="docs-lead">
+        The fastest way to run Rclona. One container includes the web UI, API, and rclone.
+      </p>
+
+      <section class="doc-section">
+        <h2>Prerequisites</h2>
+        <ul>
+          <li>Docker Engine 24+ and Docker Compose v2</li>
+          <li>A host with enough disk for your backups (local or bind-mounted volumes)</li>
+          <li>Optional: reverse proxy (Traefik, Caddy, Nginx Proxy Manager) for HTTPS</li>
+        </ul>
+      </section>
+
+      <section class="doc-section">
+        <h2>1. Pull the image</h2>
+        <pre class="code-block"><code>docker pull ghcr.io/ecodes-lab/rclona:latest</code></pre>
+        <p>Tagged releases are also published as <code>ghcr.io/ecodes-lab/rclona:v1.0.0</code> etc.</p>
+      </section>
+
+      <section class="doc-section">
+        <h2>2. Create a project folder</h2>
+        <pre class="code-block"><code>mkdir rclona && cd rclona</code></pre>
+        <p>Download the compose template from the releases page, or create <code>docker-compose.yml</code> manually:</p>
+        <pre class="code-block"><code>services:
+  rclona:
+    image: ghcr.io/ecodes-lab/rclona:latest
+    container_name: rclona
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      - RCLONA_AUTH_ENABLED=true
+      - RCLONA_AUTH_USERNAME=admin
+      - RCLONA_AUTH_PASSWORD=${RCLONA_AUTH_PASSWORD}
+      - RCLONA_LOCAL_PATHS=/data
+      - TZ=UTC
+    volumes:
+      - ./config:/config
+      - ./data:/data
+      - ./logs:/logs</code></pre>
+      </section>
+
+      <section class="doc-section">
+        <h2>3. Set your password</h2>
+        <p>Create a <code>.env</code> file next to <code>docker-compose.yml</code>:</p>
+        <pre class="code-block"><code>RCLONA_AUTH_PASSWORD=your-strong-password-here</code></pre>
+        <p>Never commit <code>.env</code> to git or share it publicly.</p>
+      </section>
+
+      <section class="doc-section">
+        <h2>4. Start Rclona</h2>
+        <pre class="code-block"><code>docker compose up -d</code></pre>
+        <p>Open <a href="http://localhost:3001">http://localhost:3001</a> and log in with the username and password from your <code>.env</code> file.</p>
+      </section>
+
+      <section class="doc-section">
+        <h2>5. Mount local folders (optional)</h2>
+        <p>To browse or back up host directories, add bind mounts under <code>volumes:</code>:</p>
+        <pre class="code-block"><code>volumes:
+  - ./config:/config
+  - ./data:/data
+  - /path/on/host/photos:/data/photos:ro
+  - /path/on/host/backups:/data/backups</code></pre>
+        <p>Then list them in <code>RCLONA_LOCAL_PATHS</code>:</p>
+        <pre class="code-block"><code>RCLONA_LOCAL_PATHS=/data,/data/photos,/data/backups</code></pre>
+      </section>
+
+      <section class="doc-section">
+        <h2>6. Reverse proxy + HTTPS (recommended)</h2>
+        <p>For internet or LAN access, do <strong>not</strong> expose port 3001 directly. Put Rclona behind HTTPS:</p>
+        <ol>
+          <li>Remove the <code>ports:</code> section from compose (or bind to <code>127.0.0.1:3001</code> only).</li>
+          <li>Attach the container to your proxy network.</li>
+          <li>Point your proxy at <code>http://rclona:3001</code>.</li>
+          <li>Keep <code>RCLONA_AUTH_ENABLED=true</code>.</li>
+        </ol>
+        <p>Example override for Traefik / external <code>proxy</code> network:</p>
+        <pre class="code-block"><code># docker-compose.override.yml
+services:
+  rclona:
+    ports: !reset []
+    networks:
+      - default
+      - proxy
+
+networks:
+  proxy:
+    external: true
+    name: proxy</code></pre>
+      </section>
+
+      <section class="doc-section">
+        <h2>Environment variables</h2>
+        <table class="env-table">
+          <thead>
+            <tr><th>Variable</th><th>Default</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>RCLONA_AUTH_ENABLED</code></td><td>true</td><td>Require login for the web UI</td></tr>
+            <tr><td><code>RCLONA_AUTH_USERNAME</code></td><td>admin</td><td>Login username</td></tr>
+            <tr><td><code>RCLONA_AUTH_PASSWORD</code></td><td>—</td><td>Login password (required)</td></tr>
+            <tr><td><code>RCLONA_LOCAL_PATHS</code></td><td>/data</td><td>Local folders shown in the path picker</td></tr>
+            <tr><td><code>RCLONE_CONFIG</code></td><td>/config/rclone.conf</td><td>Path to rclone config inside the container</td></tr>
+            <tr><td><code>RCLONA_DATA_DIR</code></td><td>/data</td><td>Scheduled jobs storage</td></tr>
+            <tr><td><code>TZ</code></td><td>UTC</td><td>Timezone for cron schedules</td></tr>
+            <tr><td><code>PORT</code></td><td>3001</td><td>HTTP port inside the container</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="doc-section">
+        <h2>Upgrading</h2>
+        <pre class="code-block"><code>docker compose pull
+docker compose up -d</code></pre>
+        <p>Your <code>/config</code> volume keeps rclone remotes and OAuth tokens across upgrades.</p>
+      </section>
+
+      <section class="doc-section">
+        <h2>Troubleshooting</h2>
+        <h3>Container exits immediately</h3>
+        <p>Check logs: <code>docker compose logs -f rclona</code>. Ensure <code>RCLONA_AUTH_PASSWORD</code> is set.</p>
+        <h3>Cannot log in</h3>
+        <p>Verify <code>.env</code> values match what you enter. Restart after changing env vars.</p>
+        <h3>Local paths not visible</h3>
+        <p>Confirm bind mounts exist and paths are listed in <code>RCLONA_LOCAL_PATHS</code>.</p>
+        <h3>Health check failing</h3>
+        <p>Wait for <code>start_period</code> (10s) on first boot. Check <code>/api/health</code> inside the container.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Rclona</p>
+      <p class="footer-note"><a href="../index.html">← Back to home</a></p>
+    </div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

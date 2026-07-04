@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Rclona — a modern web UI for rclone. Manage cloud storage, run backups, schedule sync jobs, and monitor transfers." />
+  <title>Rclona — Web UI for rclone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">Rclona</a>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="install/docker.html">Install</a>
+        <a href="install/docker.html" class="btn btn-primary btn-sm">Get started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Self-hosted · rclone-powered</p>
+          <h1>Manage cloud storage without the terminal</h1>
+          <p class="lead">
+            Rclona wraps <a href="https://rclone.org/" target="_blank" rel="noopener">rclone</a>
+            in a clean web interface — configure remotes, browse files, run copy/sync jobs,
+            schedule backups, and watch transfer progress in real time.
+          </p>
+          <div class="hero-actions">
+            <a href="install/docker.html" class="btn btn-primary">Install with Docker</a>
+            <a href="#features" class="btn btn-secondary">See features</a>
+          </div>
+          <p class="hero-note">
+            Desktop apps for Windows, macOS, and Linux are planned. Docker is available today.
+          </p>
+        </div>
+        <div class="hero-card">
+          <div class="mock-window">
+            <div class="mock-titlebar"><span></span><span></span><span></span></div>
+            <div class="mock-body">
+              <div class="mock-row"><span class="pill blue">running</span> Nightly backup → gdrive:Backups</div>
+              <div class="mock-bar"><div class="mock-bar-fill"></div></div>
+              <div class="mock-stats">2.4 GB / 5.1 GB · 12 MB/s · ETA 3m</div>
+              <div class="mock-row muted">copy · /data/documents → onedrive:Archive</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="features">
+      <div class="container">
+        <h2>Everything you need to run rclone</h2>
+        <p class="section-lead">One UI for remotes, transfers, schedules, and monitoring.</p>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Remote management</h3>
+            <p>Add and manage rclone remotes with the same wizard as <code>rclone config</code>.</p>
+          </article>
+          <article class="feature-card">
+            <h3>File browser</h3>
+            <p>Browse local and cloud paths, create folders, upload, download, and delete files.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Operations</h3>
+            <p>Run copy, sync, move, check, and bisync with dry-run, filters, and bandwidth limits.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Live job monitor</h3>
+            <p>Watch bytes, speed, and ETA update in real time over WebSocket.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Scheduled jobs</h3>
+            <p>Cron-based automated backups with include/exclude patterns.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Docker ready</h3>
+            <p>Single container with rclone included. Mount your config and data volumes.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="install-teaser">
+      <div class="container install-teaser-inner">
+        <div>
+          <h2>Install in minutes</h2>
+          <p>Pull the image, set a password, and start the container.</p>
+        </div>
+        <pre class="code-block"><code>docker pull ghcr.io/ecodes-lab/rclona:latest
+docker compose up -d</code></pre>
+        <a href="install/docker.html" class="btn btn-primary">Full Docker guide →</a>
+      </div>
+    </section>
+
+    <section class="platforms">
+      <div class="container">
+        <h2>Platforms</h2>
+        <div class="platform-grid">
+          <div class="platform-card available">
+            <h3>Docker</h3>
+            <span class="badge green">Available</span>
+            <p>Linux, NAS, VPS, homelab — any host that runs Docker.</p>
+            <a href="install/docker.html">Install guide</a>
+          </div>
+          <div class="platform-card">
+            <h3>Windows desktop</h3>
+            <span class="badge slate">Coming soon</span>
+            <p>Native Tauri app with bundled backend.</p>
+          </div>
+          <div class="platform-card">
+            <h3>macOS desktop</h3>
+            <span class="badge slate">Coming soon</span>
+            <p>Native Tauri app for Intel and Apple Silicon.</p>
+          </div>
+          <div class="platform-card">
+            <h3>Linux desktop</h3>
+            <span class="badge slate">Coming soon</span>
+            <p>AppImage / .deb packages via Tauri.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Rclona · Built on rclone</p>
+      <p class="footer-note">Source code is proprietary. Install via published Docker images.</p>
+    </div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
