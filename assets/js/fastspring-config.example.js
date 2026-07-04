@@ -13,5 +13,5 @@ window.RCLONA_FASTSPRING = {
   storefront: "YOUR_STORE.test.onfastspring.com/popup-YOUR_CHECKOUT",
 
   // Required — product path from FastSpring Catalog (e.g. donate-5, donate-15, donate-25)
-  productPath: "donate-15",
+  productPath: "donate-5",
 };
