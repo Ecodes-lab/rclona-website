@@ -1,5 +1,5 @@
 /**
- * Loads FastSpring Store Builder and exposes openRclonaDonate() globally.
+ * Loads FastSpring Store Builder and exposes openRclonaDonate(productPath) globally.
  */
 (function () {
   const cfg = window.RCLONA_FASTSPRING;
@@ -12,7 +12,6 @@
     return;
   }
 
-  let scriptReady = false;
   let scriptPromise = null;
 
   function waitForBuilder(timeoutMs) {
@@ -33,7 +32,6 @@
         const started = Date.now();
         (function poll() {
           if (window.fastspring?.builder) {
-            scriptReady = true;
             resolve(window.fastspring.builder);
             return;
           }
@@ -55,26 +53,25 @@
     return scriptPromise;
   }
 
-  function openCheckout(builder) {
-    const product = (cfg.productPath || "").trim();
-
-    if (product) {
-      if (typeof builder.reset === "function") {
-        builder.reset();
-      }
-      builder.add(product, function () {
-        builder.checkout();
-      });
+  function openCheckout(builder, productPath) {
+    const product = (productPath || cfg.productPath || "").trim();
+    if (!product) {
+      builder.checkout();
       return;
     }
-
-    // No default product — show popup catalog (requires products on checkout homepage)
-    builder.checkout();
+    if (typeof builder.reset === "function") {
+      builder.reset();
+    }
+    builder.add(product, function () {
+      builder.checkout();
+    });
   }
 
-  window.openRclonaDonate = function () {
+  window.openRclonaDonate = function (productPath) {
     waitForBuilder(15000)
-      .then(openCheckout)
+      .then(function (builder) {
+        openCheckout(builder, productPath);
+      })
       .catch(function (err) {
         console.warn("[Rclona FastSpring]", err);
       });
@@ -82,9 +79,14 @@
 
   document.querySelectorAll("[data-donate-btn]").forEach(function (el) {
     el.classList.add("donate-ready");
+    const tier = el.getAttribute("data-donate-tier");
+    if (tier) {
+      el.addEventListener("click", function () {
+        window.openRclonaDonate(tier);
+      });
+    }
   });
 
-  // Preload SBL so the first click is faster
   waitForBuilder(15000).catch(function () {
     /* ignore preload errors */
   });

@@ -18,7 +18,7 @@
         <a href="#features">Features</a>
         <!-- <a href="#privacy">Privacy</a> -->
         <a href="install/docker.html">Install</a>
-        <button type="button" class="btn btn-donate btn-sm" data-donate-btn onclick="openRclonaDonate && openRclonaDonate()">Donate</button>
+        <button type="button" class="btn btn-donate btn-sm" data-donate-btn data-donate-tier="donate-5" onclick="openRclonaDonate && openRclonaDonate('donate-5')">☕ Coffee</button>
         <a href="install/docker.html" class="btn btn-primary btn-sm">Get started</a>
       </nav>
     </div>
@@ -223,15 +223,30 @@ docker compose up -d</code></pre>
 
     <section id="support" class="support-section">
       <div class="container support-inner">
-        <h2>Support Rclona</h2>
+        <h2>Enjoying Rclona?</h2>
         <p>
-          Rclona is free to self-host. If it saves you time managing backups and cloud
-          storage, a donation helps fund development and hosting. Payments are handled
-          securely by FastSpring.
+          Rclona is free to self-host. If it saves you time on backups and cloud storage,
+          consider buying the developer a coffee — every bit helps fund hosting and new features.
+          Payments are handled securely by FastSpring.
         </p>
-        <button type="button" class="btn btn-donate" data-donate-btn onclick="openRclonaDonate && openRclonaDonate()">
-          Donate via FastSpring
-        </button>
+        <div class="donate-tiers">
+          <button type="button" class="btn btn-donate donate-tier" data-donate-btn data-donate-tier="donate-5" onclick="openRclonaDonate && openRclonaDonate('donate-5')">
+            <span class="donate-tier-emoji">☕</span>
+            <span class="donate-tier-label">Buy me a coffee</span>
+            <span class="donate-tier-price">$5</span>
+          </button>
+          <button type="button" class="btn btn-donate donate-tier" data-donate-btn data-donate-tier="donate-15" onclick="openRclonaDonate && openRclonaDonate('donate-15')">
+            <span class="donate-tier-emoji">🙏</span>
+            <span class="donate-tier-label">Support the project</span>
+            <span class="donate-tier-price">$15</span>
+          </button>
+          <button type="button" class="btn btn-donate donate-tier" data-donate-btn data-donate-tier="donate-25" onclick="openRclonaDonate && openRclonaDonate('donate-25')">
+            <span class="donate-tier-emoji">⭐</span>
+            <span class="donate-tier-label">Super supporter</span>
+            <span class="donate-tier-price">$25</span>
+          </button>
+        </div>
+        <p class="support-thanks">Thank you for your kindness — it genuinely makes a difference.</p>
       </div>
     </section>
   </main>
