@@ -18,7 +18,7 @@
         <a href="#features">Features</a>
         <!-- <a href="#privacy">Privacy</a> -->
         <a href="install/docker.html">Install</a>
-        <button type="button" class="btn btn-donate btn-sm" data-donate-btn data-donate-tier="donate-5" onclick="openRclonaDonate && openRclonaDonate('donate-5')">☕ Coffee</button>
+        <button type="button" class="btn btn-donate btn-sm" data-donate-open>☕ Coffee</button>
         <a href="install/docker.html" class="btn btn-primary btn-sm">Get started</a>
       </nav>
     </div>
@@ -229,27 +229,20 @@ docker compose up -d</code></pre>
           consider buying the developer a coffee — every bit helps fund hosting and new features.
           Payments are handled securely by FastSpring.
         </p>
-        <div class="donate-tiers">
-          <button type="button" class="btn btn-donate donate-tier" data-donate-btn data-donate-tier="donate-5" onclick="openRclonaDonate && openRclonaDonate('donate-5')">
-            <span class="donate-tier-emoji">☕</span>
-            <span class="donate-tier-label">Buy me a coffee</span>
-            <span class="donate-tier-price">$5</span>
-          </button>
-          <button type="button" class="btn btn-donate donate-tier" data-donate-btn data-donate-tier="donate-15" onclick="openRclonaDonate && openRclonaDonate('donate-15')">
-            <span class="donate-tier-emoji">🙏</span>
-            <span class="donate-tier-label">Support the project</span>
-            <span class="donate-tier-price">$15</span>
-          </button>
-          <button type="button" class="btn btn-donate donate-tier" data-donate-btn data-donate-tier="donate-25" onclick="openRclonaDonate && openRclonaDonate('donate-25')">
-            <span class="donate-tier-emoji">⭐</span>
-            <span class="donate-tier-label">Super supporter</span>
-            <span class="donate-tier-price">$25</span>
-          </button>
-        </div>
-        <p class="support-thanks">Thank you for your kindness — it genuinely makes a difference.</p>
+        <p class="support-thanks">Use the ☕ Coffee button above to choose an amount. Thank you — it genuinely makes a difference.</p>
       </div>
     </section>
   </main>
+
+  <div id="donate-modal" class="donate-modal-overlay" hidden aria-hidden="true" role="dialog" aria-labelledby="donate-modal-title" aria-modal="true">
+    <div class="donate-modal">
+      <button type="button" class="donate-modal-close" data-donate-close aria-label="Close">&times;</button>
+      <h2 id="donate-modal-title">Support Rclona</h2>
+      <p class="donate-modal-lead">Pick an amount — secure checkout via FastSpring.</p>
+      <div id="donate-modal-tiers" class="donate-tiers"></div>
+      <p class="donate-modal-thanks">Thank you for your kindness!</p>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <div class="container footer-inner">
