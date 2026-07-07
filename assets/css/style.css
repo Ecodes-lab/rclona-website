@@ -100,6 +100,16 @@ nav a:hover { color: var(--text); }
 .btn-donate:hover { background: rgba(236, 72, 153, 0.22); color: #fbcfe8; }
 .btn-donate.donate-unconfigured { opacity: 0.55; cursor: help; }
 
+/* Hidden until donationsEnabled is true in fastspring-config.js */
+[data-donate-ui] { display: none !important; }
+html.donations-enabled a.btn[data-donate-ui],
+html.donations-enabled button.btn[data-donate-ui] {
+  display: inline-flex !important;
+}
+html.donations-enabled section[data-donate-ui].support-section {
+  display: block !important;
+}
+
 .support-section {
   padding: 4rem 0;
   border-top: 1px solid var(--border);

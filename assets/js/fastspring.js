@@ -3,6 +3,17 @@
  */
 (function () {
   const cfg = window.RCLONA_FASTSPRING;
+
+  if (!cfg?.donationsEnabled) {
+    document.querySelectorAll("[data-donate-ui]").forEach(function (el) {
+      el.remove();
+    });
+    document.getElementById("donate-modal")?.remove();
+    return;
+  }
+
+  document.documentElement.classList.add("donations-enabled");
+
   const modal = document.getElementById("donate-modal");
   const tiersRoot = document.getElementById("donate-modal-tiers");
 

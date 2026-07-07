@@ -4,10 +4,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Rclona — a modern web UI for rclone. Manage cloud storage, run backups, schedule sync jobs, and monitor transfers." />
-  <meta property="og:image" content="assets/images/logo.png" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0f172a" />
   <title>Rclona — Web UI for rclone</title>
+  <link rel="canonical" href="https://rclona.ecodevsystem.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Rclona" />
+  <meta property="og:title" content="Rclona — Web UI for rclone" />
+  <meta property="og:description" content="Rclona — a modern web UI for rclone. Manage cloud storage, run backups, schedule sync jobs, and monitor transfers." />
+  <meta property="og:url" content="https://rclona.ecodevsystem.com/" />
+  <meta property="og:image" content="https://rclona.ecodevsystem.com/assets/images/logo.png" />
+  <meta property="og:image:width" content="1024" />
+  <meta property="og:image:height" content="1024" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Rclona — Web UI for rclone" />
+  <meta name="twitter:description" content="Rclona — a modern web UI for rclone. Manage cloud storage, run backups, schedule sync jobs, and monitor transfers." />
+  <meta name="twitter:image" content="https://rclona.ecodevsystem.com/assets/images/logo.png" />
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Rclona",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Linux, Docker",
+    "description": "A modern web UI for rclone. Manage cloud storage, run backups, schedule sync jobs, and monitor transfers.",
+    "url": "https://rclona.ecodevsystem.com/",
+    "image": "https://rclona.ecodevsystem.com/assets/images/logo.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -17,14 +48,14 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html">
-        <img src="assets/images/logo.svg" alt="" width="32" height="32" class="logo-mark" />
+        <img src="assets/images/logo.svg" alt="Rclona" width="32" height="32" class="logo-mark" />
         <span>Rclona</span>
       </a>
       <nav>
         <a href="#features">Features</a>
         <!-- <a href="#privacy">Privacy</a> -->
         <a href="install/docker.html">Install</a>
-        <button type="button" class="btn btn-donate btn-sm" data-donate-open>☕ Coffee</button>
+        <button type="button" class="btn btn-donate btn-sm" data-donate-open data-donate-ui>☕ Coffee</button>
         <a href="install/docker.html" class="btn btn-primary btn-sm">Get started</a>
       </nav>
     </div>
@@ -227,7 +258,7 @@ docker compose up -d</code></pre>
       </div>
     </section>
 
-    <section id="support" class="support-section">
+    <section id="support" class="support-section" data-donate-ui>
       <div class="container support-inner">
         <h2>Enjoying Rclona?</h2>
         <p>

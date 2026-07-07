@@ -9,9 +9,17 @@
  * 6. For production, remove .test. and whitelist your GitHub Pages domain in FastSpring
  */
 window.RCLONA_FASTSPRING = {
+  /** Set to true after FastSpring account is verified and checkout is tested. */
+  donationsEnabled: false,
+
   // Required — from the data-storefront attribute in FastSpring's snippet
   storefront: "YOUR_STORE.test.onfastspring.com/popup-YOUR_CHECKOUT",
 
   // Required — product path from FastSpring Catalog (e.g. donate-5, donate-15, donate-25)
   productPath: "donate-5",
+  tiers: [
+    { path: "donate-5", emoji: "☕", label: "Buy me a coffee", price: "$5" },
+    { path: "donate-15", emoji: "🙏", label: "Support the project", price: "$15" },
+    { path: "donate-25", emoji: "⭐", label: "Super supporter", price: "$25" },
+  ],
 };

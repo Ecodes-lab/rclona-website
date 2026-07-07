@@ -2,6 +2,8 @@
  * FastSpring popup checkout — edit before deploying.
  */
 window.RCLONA_FASTSPRING = {
+  /** Set to true after FastSpring account is verified and checkout is tested. */
+  donationsEnabled: false,
   storefront: "ecodes.test.onfastspring.com/popup-donate",
   productPath: "donate-5",
   tiers: [
