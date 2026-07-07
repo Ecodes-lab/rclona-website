@@ -50,9 +50,17 @@ a:hover { color: var(--brand-hover); }
 }
 
 .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   font-weight: 700;
   font-size: 1.25rem;
   color: var(--text);
+}
+
+.logo-mark {
+  display: block;
+  border-radius: 8px;
 }
 
 nav { display: flex; align-items: center; gap: 1.25rem; }
