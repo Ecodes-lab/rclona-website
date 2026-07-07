@@ -16,6 +16,7 @@
       <a class="logo" href="index.html">Rclona</a>
       <nav>
         <a href="#features">Features</a>
+        <a href="#privacy">Privacy</a>
         <a href="install/docker.html">Install</a>
         <button type="button" class="btn btn-donate btn-sm" data-donate-btn onclick="openRclonaDonate && openRclonaDonate()">Donate</button>
         <a href="install/docker.html" class="btn btn-primary btn-sm">Get started</a>
@@ -58,34 +59,124 @@
 
     <section id="features" class="features">
       <div class="container">
-        <h2>Everything you need to run rclone</h2>
-        <p class="section-lead">One UI for remotes, transfers, schedules, and monitoring.</p>
-        <div class="feature-grid">
+        <h2>Features</h2>
+        <p class="section-lead">What Rclona offers today — and what is on the roadmap.</p>
+        <div class="feature-grid feature-grid-wide">
           <article class="feature-card">
-            <h3>Remote management</h3>
-            <p>Add and manage rclone remotes with the same wizard as <code>rclone config</code>.</p>
+            <span class="badge green">Available</span>
+            <h3>Browse &amp; manage remote storage</h3>
+            <p>Disk Manager for local paths and cloud remotes — upload, download, delete, rename, and create folders.</p>
           </article>
           <article class="feature-card">
-            <h3>File browser</h3>
-            <p>Browse local and cloud paths, create folders, upload, download, and delete files.</p>
+            <span class="badge green">Available</span>
+            <h3>Drag &amp; drop file transfers</h3>
+            <p>Drop files onto a folder in Disk Manager to upload directly to local or remote storage.</p>
           </article>
           <article class="feature-card">
-            <h3>Operations</h3>
-            <p>Run copy, sync, move, check, and bisync with dry-run, filters, and bandwidth limits.</p>
+            <span class="badge green">Available</span>
+            <h3>Organize &amp; track jobs</h3>
+            <p>Dashboard and Jobs pages list active, completed, and failed transfers with full history.</p>
           </article>
           <article class="feature-card">
-            <h3>Live job monitor</h3>
-            <p>Watch bytes, speed, and ETA update in real time over WebSocket.</p>
+            <span class="badge green">Available</span>
+            <h3>Real-time transfer monitoring</h3>
+            <p>Live bytes, speed, ETA, and file counts over WebSocket while jobs run.</p>
           </article>
           <article class="feature-card">
-            <h3>Scheduled jobs</h3>
-            <p>Cron-based automated backups with include/exclude patterns.</p>
+            <span class="badge green">Available</span>
+            <h3>Connect with external rclone</h3>
+            <p>Point Rclona at your existing <code>rclone.conf</code> and rclone binary via environment variables.</p>
           </article>
           <article class="feature-card">
-            <h3>Docker ready</h3>
-            <p>Single container with rclone included. Mount your config and data volumes.</p>
+            <span class="badge green">Available</span>
+            <h3>Sync one source to many</h3>
+            <p>Enter multiple destinations in Operations — Rclona starts a job per destination.</p>
+          </article>
+          <article class="feature-card">
+            <span class="badge green">Available</span>
+            <h3>Job scheduling</h3>
+            <p>Cron-based automated copy, sync, and move jobs with include/exclude filters.</p>
+          </article>
+          <article class="feature-card">
+            <span class="badge green">Available</span>
+            <h3>App lock with password</h3>
+            <p>Optional HTTP basic auth protects the web UI when <code>RCLONA_AUTH_PASSWORD</code> is set.</p>
+          </article>
+          <article class="feature-card">
+            <span class="badge green">Available</span>
+            <h3>Favorite remote folders</h3>
+            <p>Save frequently used paths as aliases in Disk Manager for one-click navigation.</p>
+          </article>
+          <article class="feature-card">
+            <span class="badge green">Available</span>
+            <h3>System notifications</h3>
+            <p>Browser notifications when jobs complete or fail (enable in Settings).</p>
+          </article>
+          <article class="feature-card">
+            <span class="badge green">Available</span>
+            <h3>Customizable themes</h3>
+            <p>Dark and light UI themes — preference stored in your browser.</p>
+          </article>
+          <article class="feature-card">
+            <span class="badge green">Available</span>
+            <h3>Batch job management</h3>
+            <p>Select multiple running jobs and cancel them together from the Jobs page.</p>
+          </article>
+          <article class="feature-card">
+            <span class="badge amber">Partial</span>
+            <h3>Folder comparison with filter</h3>
+            <p><code>check</code> command with include/exclude patterns runs via rclone; results appear in job logs (no side-by-side diff UI yet).</p>
+          </article>
+          <article class="feature-card">
+            <span class="badge slate">Planned</span>
+            <h3>Auto-detect Synology NAS</h3>
+            <p>Automatic discovery of Synology devices on your network.</p>
+          </article>
+          <article class="feature-card">
+            <span class="badge slate">Planned</span>
+            <h3>Mount cloud as a local drive</h3>
+            <p>FUSE / <code>rclone mount</code> integration to expose remotes as OS filesystem paths.</p>
+          </article>
+          <article class="feature-card">
+            <span class="badge slate">Planned</span>
+            <h3>Integrated terminal tab</h3>
+            <p>Run rclone CLI commands inside the UI.</p>
+          </article>
+          <article class="feature-card">
+            <span class="badge slate">Planned</span>
+            <h3>Email notifications</h3>
+            <p>Basic and smart email alerts when scheduled or manual jobs finish.</p>
+          </article>
+          <article class="feature-card">
+            <span class="badge slate">Planned</span>
+            <h3>Multi-window per connection</h3>
+            <p>Separate desktop windows for each remote (desktop app).</p>
+          </article>
+          <article class="feature-card">
+            <span class="badge slate">Planned</span>
+            <h3>Slack / Discord / Telegram control</h3>
+            <p>Remote job triggers and status via chat integrations.</p>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section id="privacy" class="privacy-section">
+      <div class="container privacy-inner">
+        <p class="eyebrow">Privacy guaranteed</p>
+        <h2>Zero-knowledge architecture</h2>
+        <p class="privacy-lead">
+          Rclona operates strictly as a <strong>local GUI</strong>.
+          We have <strong>no access to your data</strong>. All transfers are executed by the
+          trusted open-source <a href="https://rclone.org/" target="_blank" rel="noopener">rclone</a> binary
+          on <em>your</em> machine or server.
+        </p>
+        <ul class="privacy-list">
+          <li>Your files never pass through Rclona’s servers — there are no Rclona cloud servers for your data.</li>
+          <li>Cloud credentials live in your <code>rclone.conf</code> on your host, under your control.</li>
+          <li>The web UI talks only to the local Rclona backend on the same host (or your LAN).</li>
+          <li>Self-hosted Docker means you own the container, volumes, and network boundary.</li>
+        </ul>
       </div>
     </section>
 

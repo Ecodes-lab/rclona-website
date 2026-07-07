@@ -268,6 +268,50 @@ nav a:hover { color: var(--text); }
 }
 .badge.green { background: rgba(52, 211, 153, 0.15); color: var(--green); }
 .badge.slate { background: rgba(148, 163, 184, 0.15); color: var(--muted); }
+.badge.amber { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
+
+.feature-grid-wide {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.feature-card .badge {
+  margin-bottom: 0.65rem;
+}
+
+.privacy-section {
+  padding: 4rem 0;
+  border-top: 1px solid var(--border);
+  background: radial-gradient(ellipse at center, rgba(52, 211, 153, 0.06), transparent 70%);
+}
+
+.privacy-inner {
+  max-width: 42rem;
+}
+
+.privacy-lead {
+  font-size: 1.1rem;
+  color: var(--text);
+  margin: 0 0 1.25rem;
+  line-height: 1.7;
+}
+
+.privacy-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--muted);
+}
+
+.privacy-list li {
+  margin-bottom: 0.65rem;
+}
+
+.privacy-list code {
+  font-size: 0.85em;
+  background: #0b1220;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  color: var(--text);
+}
 
 .site-footer {
   padding: 2rem 0;
