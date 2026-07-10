@@ -37,18 +37,17 @@ When the Docker image name or env vars change in the private app repo, update:
 - `install/docker.html`
 - The compose snippet on the home page
 
-## Donation button (FastSpring)
+## Donation button (Paystack / FastSpring)
 
-1. Edit `assets/js/fastspring-config.js` with your FastSpring `data-storefront` URL
-2. See the app repo `docs/FASTSPRING.md` for full setup
+1. Edit `assets/js/donate-config.js` — set `provider`, `paystackPageUrl` (or FastSpring fields), and `donationsEnabled: true`
+2. See the app repo `docs/DONATIONS.md` for full setup
 3. Push to redeploy GitHub Pages:
 
 ```bash
 git add .
-git commit -m "Configure FastSpring donate button"
+git commit -m "Configure Paystack donate button"
 git push origin master
 ```
-
 ## License
 
 Site content © Rclona. Not open source.
